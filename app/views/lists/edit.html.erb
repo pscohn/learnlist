@@ -1,0 +1,18 @@
+<% provide(:title, 'Edit list') %>
+<h1>Edit list</h1>
+<%= form_for @list do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+  <br />
+    <%= f.fields_for :list_items do |items_form| %>
+      <%= render "list_item_fields", f: items_form %>
+      <br />
+    <% end %>
+    <%= link_to_add_fields "Add Question", f, :list_items %>
+
+  <%= f.submit "Edit list" %>
+<% end %>
+<%= link_to 'Back', lists_path %>
