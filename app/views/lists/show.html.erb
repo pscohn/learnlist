@@ -1,15 +1,40 @@
 <% provide(:title, @list.name) %>
+<%= link_to gravatar_for(@list.user, size: 50), @list.user %>
+<span class="user"><%= link_to @list.user.username, @list.user %></span>
+<%= render partial: 'save', locals: {list: @list} %>
 <div class="row">
   <aside class="col-md-4">
     <section class="user_info">
       <h1>
         <%= @list.name %>
       </h1>
-      <%= @list.description %>
+      <% if logged_in? %>
+        <% if @list_user.nil? || @list_user.state == 'todo' %>
+          <%= link_to "Mark In Progress", in_progress_list_path(@list), method: :post %>
+          <%= link_to "Mark Complete", completed_list_path(@list), method: :post %>
+        <% elsif @list_user.state == 'in_progress' %>
+          You are in progress.
+          <%= link_to "Reset", reset_list_path(@list), method: :post %>
+          <%= link_to "Mark Complete", completed_list_path(@list), method: :post %>
+        <% elsif @list_user.state == 'completed' %>
+          You have completed this.
+          <%= link_to "Reset", reset_list_path(@list), method: :post %>
+          <%= link_to "Mark In Progress", in_progress_list_path(@list), method: :post %>
+        <% end %>
+      <% else %>
+        <%= link_to "Mark In Progress", in_progress_list_path(@list), method: :post %>
+        <%= link_to "Mark Complete", completed_list_path(@list), method: :post %>
+      <% end %>
+      <%= markdown(@list.description) %>
       <% @list.list_items.each do |item| %>
+        <h2><%= item.title %></h2>
+        <% if logged_in? && current_user.checked?(item) %>
+          <%= link_to "Mark Incomplete", check_list_item_path(item), method: :post %>
+        <% else %>
+          <%= link_to "Mark Complete", check_list_item_path(item), method: :post %>
+        <% end %>
         <div>
-          <%= item.title %>
-          <%= item.description %>
+          <%= markdown(item.description) %>
         </div>
       <% end %>
     </section>

@@ -1,0 +1,11 @@
+<li class="list-box" id="list-<%= list.id %>">
+  <h2>
+    <%= link_to list.name, list %>
+  </h2>
+  <p><%= truncate(list.description, length: 100) %></p>
+  <div class="list-meta">
+    <span class="user">by <%= link_to list.user.username, list.user %></span>
+    &middot;
+    <%= render partial: 'lists/save', locals: {list: list} %>
+  </div>
+</li>

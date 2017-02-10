@@ -24,6 +24,17 @@ $(document).on("click", "a.link_to_add_fields", function(e){
   add_fields(link, association, content);
 });
 
+$(document).on("click", "a.link_to_remove_fields", function(e) {
+  e.preventDefault();
+  var link = $(this);
+  remove_fields(link);
+});
+
+function remove_fields(link) {
+  $(link).prev("input[type=hidden]").val("1");
+  $(link).closest(".fields").hide();
+}
+
 function add_fields(link, association, content) {
   var new_id = new Date().getTime();
   var regexp = new RegExp("new_" + association, "g")
