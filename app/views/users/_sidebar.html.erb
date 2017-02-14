@@ -1,3 +1,4 @@
+<% if @user.username %>
 <sidebar>
   <h2>
     <%= gravatar_for @user, size: 40 %>
@@ -10,3 +11,4 @@
     <li><%= active_link_to 'Saved', saved_user_path(@user), active: 'border-left' %></li>
   </ul>
 </sidebar>
+<% end %>

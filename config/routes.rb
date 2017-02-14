@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   get 'home/completed' => 'home#completed'
   get 'home/saved' => 'home#saved'
   get 'home/created' => 'home#created'
-  get 'popular' => 'lists#popular'
+  get 'recent' => 'explore#recent'
+  get 'popular' => 'explore#popular'
 
   resources :users do
     member do
