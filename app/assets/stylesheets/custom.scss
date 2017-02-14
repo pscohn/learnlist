@@ -1,13 +1,26 @@
+/* $pink: #f9849e; #e64569; #ff97aa; ff7d7d; ff8484 (sarah) */
+$pink: #FF6565;
+$border-color: #ddd;
+$green: #23c347;
+$background-gray: #f9f9f9;
+$gray: #999;
+
 html {
-  background-color: #f9f9f9;
+  background-color: $background-gray;
   height: 100%;
 }
 
 body {
   font-family: "Helvetica Neue", "Helvetica", "Arial", Sans-Serif;
   -webkit-font-smoothing: antialiased;
-  display: flex;
   height: 100%;
+  line-height: 1.5em;
+  display: flex;
+  flex-direction: column;
+}
+
+strong {
+  font-weight: bold;
 }
 
 a {
@@ -42,7 +55,7 @@ input, textarea {
   line-height: 1.5em;
   font-size: 1em;
   width: 100%;
-  border: 1px solid #ddd;
+  border: 1px solid $border-color;
   padding-left: .5em;
 
   &:focus {
@@ -55,10 +68,8 @@ input {
 }
 
 input[type="submit"], a.button {
-  background-color: #f9849e;
-  text-transform: uppercase;
+  background-color: $pink;
   color: white;
-  font-weight: bold;
 
   &:hover {
     cursor: pointer;
@@ -67,40 +78,97 @@ input[type="submit"], a.button {
 
 a.button {
   line-height: 1.5em;
-  border: 1px solid #ddd;
+  border: 1px solid $border-color;
   padding: .5em;
+  text-align: center;
   &:hover {
     text-decoration: none;
   }
 }
 
-sidebar {
+.complete {
+  background-color: $green !important;
+}
+
+.right {
+  float: right;
+}
+
+header {
+  flex: none;
+  background-color: $pink;
+  padding: 1em;
+  font-weight: bold;
+  box-shadow: 0 1px 2px 0 rgba(0,0,0,0.50);
+  ul {
+    display: inline;
+  }
+  a, a:visited {
+    color: white;
+  }
+  a:hover {
+    text-decoration: none;
+    color: #eee;
+  }
+  li {
+    display: inline;
+    padding: .5em;
+  }
+}
+
+.header-button {
+  background: #FCB4B4;
+  color: #FF6565 !important;
+  font-size: small;
+  padding: .5em;
+  border-radius: 3px;
+}
+
+
+footer {
+  flex: none;
   background-color: white;
+  border-top: 1px solid $border-color;
+  padding: .5em;
+  li {
+    display: inline;
+  }
+}
+
+.border-left {
+  border-left: 3px solid $pink;
+}
+
+sidebar {
   margin: 2em;
   flex-grow: 2;
-  border: 1px solid #ddd;
-  border-radius: 5px;
   line-height: 1.5em;
   width: 150px;
   display: table;
 
   a {
     display: block;
-    padding: .5em;
-    &:hover {
+    padding: .4em;
+  }
+
+  h2 a {
+    display: inline;
+  }
+
+  li {
+    a:hover {
       background-color: #eee;
       cursor: pointer;
       text-decoration: none;
     }
   }
-
-  li {
-    border-bottom: 1px solid #ddd;
-    &:last-child {
-      border-bottom: none;
-    }
-  }
 }
+
+.main {
+  flex: auto;
+  display: flex;
+}
+
 
 .container {
   width: 940px;
@@ -109,15 +177,85 @@ sidebar {
   flex-grow: 2;
 }
 
-.list-box {
-  margin: 1em 0;
-  padding: .5em;
-  border: 1px solid #ddd;
+.list-summary {
+  margin-bottom: 1em;
+
+  h2 {
+    font-weight: bold;
+    margin-bottom: 0;
+  }
+}
+
+.progress-bar-container {
+  background-color: $border-color;
+  height: 1em;
+  width: 100%;
+}
+
+.progress-bar {
+  background-color: $pink;
+  height: 1em;
+}
+
+.progress-stat {
+  text-transform: uppercase;
+  color: $gray;
+  font-weight: bold;
+  font-size: small;
+}
+
+.panel {
+  border: 1px solid $border-color;
   border-radius: 5px;
   background-color: #ffffff;
+  margin: 1em 0;
+}
+
+.list-box {
+  padding: .5em;
+}
+
+.list-actions {
+  padding: 1em;
 }
 
 .list-meta {
   font-size: .8em;
   color: #333;
+}
+
+.list-description {
+  margin: 1em 0;
+}
+
+.list-items {
+  a.button {
+    display: block;
+  }
+
+  li {
+    border-bottom: 1px solid $border-color;
+    &:last-child {
+      border-bottom: none;
+    }
+    .list-item-main {
+      display: flex;
+      border-bottom: 1px solid $border-color;
+    }
+    .list-item-main h2 {
+      line-height: 1.5em;
+      padding: .5em;
+      flex-grow: 1;
+      margin: 0;
+    }
+    .list-item-actions {
+      min-width: 100px;
+      padding: .5em;
+      border-left: 1px solid $border-color;
+    }
+    .list-item-description {
+      padding: .5em;
+      background-color: $background-gray;
+    }
+  }
 }

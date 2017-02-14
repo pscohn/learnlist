@@ -1,0 +1,9 @@
+<% provide(:title, @user.username) %>
+<% unless @user == current_user %>
+  <h1>
+    Completed by <%= @user.username %>
+  </h1>
+<% end %>
+<ul>
+  <%= render(partial: 'lists/list_summary', collection: @lists, as: :list) || "Nothing here." %>
+</ul>

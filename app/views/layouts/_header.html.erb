@@ -1,13 +1,24 @@
-<sidebar>
-  <ul>
-    <li><%= link_to "Lists", lists_path  %></li>
+<header>
+  <nav>
     <% if logged_in? %>
-      <li><%= link_to "Profile", current_user %></li>
-      <li><%= link_to "Settings", edit_user_path(current_user) %></li>
-      <li><%= link_to "Log out", logout_path, method: "delete" %></li>
+      <ul>
+        <li><%= link_to "Home", home_path  %></li>
+        <li><%= link_to "Explore", lists_path %></li>
+        <li><%= link_to "Profile", current_user %></li>
+        <%= link_to "Create list", new_list_path, class: 'header-button' %>
+      </ul>
+      <ul class="right">
+        <li><%= link_to "Settings", edit_user_path(current_user) %></li>
+        <li><%= link_to "Log out", logout_path, method: "delete" %></li>
+      </ul>
     <% else %>
-      <li><%= link_to "Log in", login_path %></li>
-      <li><%= link_to "Sign up", signup_path %></li>
+      <ul>
+        <li><%= link_to "Home", lists_path  %></li>
+      </ul>
+      <ul class="right">
+        <li><%= link_to "Log in", login_path %></li>
+        <li><%= link_to "Sign up", signup_path %></li>
+      </ul>
     <% end %>
-  </ul>
-</sidebar>
+  </nav>
+</header>

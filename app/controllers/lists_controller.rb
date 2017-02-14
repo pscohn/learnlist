@@ -11,6 +11,12 @@ class ListsController < ApplicationController
   end
 
   def index
+    #TODO make recent
+    @lists = List.paginate(page: params[:page])
+  end
+
+  def popular
+    #TODO
     @lists = List.paginate(page: params[:page])
   end
 
@@ -54,6 +60,7 @@ class ListsController < ApplicationController
     user_check = UserCheck.find_or_create_by(user: current_user, list_item: list_item)
     user_check.completed = !user_check.completed
     if user_check.save
+      current_user.check_completion(list_item.list)
       redirect_back(fallback_location: list_item.list)
     else
       flash[:error] = user_check.errors

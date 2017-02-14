@@ -1,0 +1,11 @@
+<sidebar>
+  <h2>Dashboard</h2>
+   <ul class="">
+    <% if logged_in? %>
+      <li><%= active_link_to 'In Progress', home_path, active: 'border-left' %></li>
+      <li><%= active_link_to 'Completed', home_completed_path, active: 'border-left' %></li>
+      <li><%= active_link_to 'Created', home_created_path, active: 'border-left' %></li>
+      <li><%= active_link_to 'Saved', home_saved_path, active: 'border-left' %></li>
+    <% end %>
+  </ul>
+</sidebar>

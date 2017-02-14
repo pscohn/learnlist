@@ -1,8 +1,14 @@
 Rails.application.routes.draw do
+  root 'landing#index'
   get 'signup' => 'users#new'
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
+  get 'home' => 'home#in_progress'
+  get 'home/completed' => 'home#completed'
+  get 'home/saved' => 'home#saved'
+  get 'home/created' => 'home#created'
+  get 'popular' => 'lists#popular'
 
   resources :users do
     member do
