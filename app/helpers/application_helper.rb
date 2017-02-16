@@ -16,7 +16,7 @@ module ApplicationHelper
   end
 
   def link_to_remove_fields(name, f)
-    f.hidden_field(:_destroy) + link_to(name, "#", class: "link_to_remove_fields")
+    f.hidden_field(:_destroy) + link_to(name, "#", class: "link_to_remove_fields button")
   end
 
   def link_to_add_fields(name, f, association)

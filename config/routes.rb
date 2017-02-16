@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get 'recent' => 'explore#recent'
   get 'popular' => 'explore#popular'
 
-  resources :users do
+  resources :users, param: :username do
     member do
       get 'created'
       get 'saved'

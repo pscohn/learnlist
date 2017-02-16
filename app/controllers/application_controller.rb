@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   end
 
   def correct_user
-    @user = User.find(params[:id])
+    @user = User.where('lower(username) = ?', params[:username].downcase).first
     redirect_to(root_url) unless current_user?(@user)
   end
 end

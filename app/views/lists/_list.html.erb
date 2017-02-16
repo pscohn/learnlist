@@ -1,11 +1,11 @@
-<li class="list-summary" id="list-<%= list.id %>">
+<li class="list-summary border" id="list-<%= list.id %>">
   <h2>
     <%= link_to list.name, list %>
   </h2>
   <div class="list-meta">
     <span class="user">by <%= link_to list.user.username, list.user %></span>
     &middot;
-    <%= render partial: 'lists/save', locals: {list: list, class_name: ''} %>
+    <%= render partial: 'lists/save', locals: {list: list, proper: false, class_name: ''} %>
   </div>
   <p><%= truncate(list.description, length: 100) %></p>
 </li>

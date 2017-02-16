@@ -14,6 +14,10 @@ class User < ApplicationRecord
   has_many :list_users
   has_many :user_checks
 
+  def to_param
+    username
+  end
+
   def saved?(list)
     list_user = list_users.find_by(list: list)
     list_user && list_user.saved == true
@@ -36,6 +40,7 @@ class User < ApplicationRecord
 
   def percent_completed(list)
     item_ids = list.list_items.pluck(:id)
+    return 100 if item_ids.blank?
     completed_ids = user_checks.where(list_item_id: item_ids, completed: true).pluck(:list_item_id)
     completed_ids.count.to_f / item_ids.count * 100
   end

@@ -5,9 +5,9 @@
     <%= link_to @user.username, @user %>
   </h2>
   <ul>
+    <li><%= active_link_to 'Created', created_user_path(@user), active: 'border-left' %></li>
     <li><%= active_link_to 'In Progress', in_progress_user_path(@user), active: 'border-left' %></li>
     <li><%= active_link_to 'Completed', completed_user_path(@user), active: 'border-left' %></li>
-    <li><%= active_link_to 'Created', created_user_path(@user), active: 'border-left' %></li>
     <li><%= active_link_to 'Saved', saved_user_path(@user), active: 'border-left' %></li>
   </ul>
 </sidebar>

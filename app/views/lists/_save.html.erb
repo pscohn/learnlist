@@ -1,5 +1,5 @@
 <% if current_user&.saved? list %>
-  <%= link_to 'unsave', unsave_list_path(list), method: :post, class: class_name %>
+  <%= link_to(proper ? 'Unsave' : 'unsave', unsave_list_path(list), method: :post, class: class_name) %>
 <% else %>
-  <%= link_to 'save', save_list_path(list), method: :post, class: class_name %>
+  <%= link_to(proper ? 'Save' : 'unsave', save_list_path(list), method: :post, class: class_name) %>
 <% end %>

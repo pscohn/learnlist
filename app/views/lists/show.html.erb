@@ -1,39 +1,32 @@
 <% provide(:title, @list.name) %>
 <div>
-  <div class="panel list-actions">
-    <%= render partial: 'save', locals: {list: @list, class_name: 'button'} %>
-    <% if logged_in? %>
-      <% if @list_user.nil? || @list_user.state == 'todo' %>
-        <%= link_to "Begin Course", in_progress_list_path(@list), method: :post, class: "button" %>
-      <% elsif @list_user.state == 'in_progress' %>
-        <%= link_to "Stop Course", reset_list_path(@list), method: :post, class: "button" %>
-        <%= current_user.percent_completed(@list) %>% completed
-      <% elsif @list_user.state == 'completed' %>
-        You have completed this course.
-      <% end %>
-    <% else %>
-      <%= link_to "Begin Course", in_progress_list_path(@list), method: :post, class: "button" %>
-    <% end %>
+  <div class="list-info">
+    <div>
+      <%= link_to gravatar_for(@list.user, size: 50), @list.user %>
+    </div>
+    <div>
+      <span class="user"><%= link_to @list.user.username, @list.user %></span>
+      <span class="list-info-dates">created <%= @list.created_at %> &middot; updated <%= @list.created_at %></span>
+    </div>
   </div>
   <h1><%= @list.name %></h1>
-  <%= link_to gravatar_for(@list.user, size: 50), @list.user %>
-  <span class="user">by <%= link_to @list.user.username, @list.user %></span>
+  <%= render 'user_actions' %>
   <div class="list-description">
     <%= markdown(@list.description) %>
   </div>
-  <div class="panel list-items">
+  <div class="list-items">
     <ul>
       <% @list.list_items.each do |item| %>
         <li>
           <div class="list-item-main">
-            <h2><%= item.title %></h2>
             <div class="list-item-actions">
               <% if logged_in? && current_user.checked?(item) %>
-                <%= link_to "Completed", check_list_item_path(item), method: :post, class: "button complete" %>
+                <%= link_to "✓", check_list_item_path(item), method: :post, class: "check complete checkmark" %>
               <% else %>
-                <%= link_to "Complete", check_list_item_path(item), method: :post, class: "button" %>
+                <%= link_to "✓", check_list_item_path(item), method: :post, class: "check" %>
               <% end %>
             </div>
+            <h2><%= item.title %></h2>
           </div>
           <% if item.description.present? %>
             <div class="list-item-description">
