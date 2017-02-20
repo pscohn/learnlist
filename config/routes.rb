@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   get 'popular' => 'explore#popular'
   get 'settings' => 'users#edit'
 
+  resources :account_activations, only: [:edit]
+
   resources :users, except: [:index, :edit], param: :username do
     member do
       get 'created'
