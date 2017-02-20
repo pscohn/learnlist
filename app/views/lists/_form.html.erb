@@ -3,11 +3,13 @@
   <%= f.text_field :name %>
   <%= f.label :description %>
   <%= f.text_area :description, rows: 5 %>
-  <%= f.label :steps %>
-  <%= f.fields_for :list_items do |items_form| %>
-    <%= render "list_item_fields", f: items_form %>
+  <% if @list.id %>
+    <%= f.label :steps %>
+    <%= f.fields_for :list_items do |items_form| %>
+      <%= render "list_item_fields", f: items_form %>
+    <% end %>
+    <%= link_to_add_fields "Add Item", f, :list_items %>
   <% end %>
-  <%= link_to_add_fields "Add Item", f, :list_items %>
   <%= f.submit "Save" %>
 <% end %>
 <% if @list.id %>

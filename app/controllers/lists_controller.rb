@@ -28,8 +28,9 @@ class ListsController < ApplicationController
     @list = current_user.lists.build(list_params)
     if @list.save
       flash[:success] = 'List created'
-      redirect_to @list
+      redirect_to edit_list_path(@list)
     else
+      flash[:danger] = @list.errors.all
       render 'new'
     end
   end
