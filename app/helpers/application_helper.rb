@@ -24,6 +24,6 @@ module ApplicationHelper
     fields = f.fields_for(association, new_object, :child_index => "new_#{association}") do |builder|
       render(association.to_s.singularize + "_fields", :f => builder)
     end
-    link_to(name, "#", "data-association" => "#{association}",  "data-content" => "#{fields}", :class => "link_to_add_fields" )
+    link_to(name, "#", "data-association" => "#{association}",  "data-content" => "#{fields}", :class => "button link_to_add_fields" )
   end
 end

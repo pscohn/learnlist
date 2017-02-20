@@ -40,9 +40,9 @@ class ListsController < ApplicationController
 
   def update
     @list = List.find(params[:id])
-    if @list.update_attributes(list_params)
+    if @list.update_attributes(list_params.merge(updated_at: Time.now))
       flash[:success] = 'List edited'
-      redirect_to edit_list_path(@list)
+      redirect_to list_path(@list)
     else
       flash[:error] = @list.errors
       redirect_to edit_list_path(@list)

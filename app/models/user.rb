@@ -40,7 +40,7 @@ class User < ApplicationRecord
 
   def percent_completed(list)
     item_ids = list.list_items.pluck(:id)
-    return 100 if item_ids.blank?
+    return 0 if item_ids.blank?
     completed_ids = user_checks.where(list_item_id: item_ids, completed: true).pluck(:list_item_id)
     completed_ids.count.to_f / item_ids.count * 100
   end

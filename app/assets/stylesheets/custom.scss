@@ -1,11 +1,4 @@
-/* $pink: #f9849e; #e64569; #ff97aa; ff7d7d; ff8484 (sarah) */
-$pink: #FF6565;
-$border-color: #ddd;
-$green: #3eb358;
-$background-gray: #f9f9f9;
-$gray: #999;
-$meta-gray: #555;
-$blue: #3790e0;
+@import 'colors';
 
 html {
   background-color: $background-gray;
@@ -58,6 +51,7 @@ label, input, textarea {
 }
 
 input, textarea {
+  box-sizing: border-box;
   line-height: 1.5em;
   font-size: 1em;
   width: 100%;
@@ -248,6 +242,22 @@ sidebar {
   margin: 1em 0;
 }
 
+.alert {
+  padding: .5em;
+  color: white;
+  border-radius: 3px;
+  font-weight: bold;
+  margin-bottom: .5em;
+}
+
+.alert-success {
+  background: $green;
+}
+
+.alert-danger {
+  background: $red;
+}
+
 .list-box {
   padding: .5em;
 }
@@ -283,30 +293,29 @@ a.check, a.check:visited {
 }
 
 .check {
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
   display: block;
   border-radius: 50%;
   border: 5px solid $border-color;
   position: relative;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 2em;
-  line-height: 32px;
+  font-size: 1.8em;
+  line-height: 25px;
   text-align: center;
 }
 
 .check.complete {
-  width: 40px;
-  height: 40px;
-  line-height: 40px;
+  width: 35px;
+  height: 35px;
+  line-height: 35px;
   border: none;
   background: $green;
 }
 
 .checkmark {
-  display:inline-block;
-  
+  display: inline-block;
 }
 
 .list-items {
@@ -325,10 +334,14 @@ a.check, a.check:visited {
       border-bottom: 1px solid $border-color;
     }
     .list-item-main h2 {
+      font-size: 1.3em;
       line-height: 1.5em;
       padding: .5em;
       flex-grow: 1;
       margin: 0;
+      a, a:visited {
+        color: $blue;
+      }
     }
     .list-item-actions {
       padding: .5em;
@@ -349,5 +362,17 @@ a.check, a.check:visited {
   .input {
     flex: 1;
   }
-  
+  .button {
+    margin-left: .5em;
+    display: inline-block;
+  }
+}
+.link_to_add_fields {
+  background-color: $blue !important;
+  display: inline-block;
+  margin-bottom: 1em;
+}
+.delete-button {
+  background-color: $red !important;
+  display: inline-block;
 }

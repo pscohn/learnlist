@@ -7,6 +7,7 @@ gem 'pg'
 gem 'bcrypt'
 gem 'redcarpet'
 gem 'will_paginate', '3.1.5'
+gem 'rails_autolink'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets

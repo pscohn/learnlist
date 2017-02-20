@@ -10,8 +10,9 @@ Rails.application.routes.draw do
   get 'home/created' => 'home#created'
   get 'recent' => 'explore#recent'
   get 'popular' => 'explore#popular'
+  get 'settings' => 'users#edit'
 
-  resources :users, param: :username do
+  resources :users, except: [:index, :edit], param: :username do
     member do
       get 'created'
       get 'saved'

@@ -6,7 +6,7 @@
     </div>
     <div>
       <span class="user"><%= link_to @list.user.username, @list.user %></span>
-      <span class="list-info-dates">created <%= @list.created_at %> &middot; updated <%= @list.created_at %></span>
+      <span class="list-info-dates">created <%= @list.created_at %> &middot; updated <%= @list.updated_at %></span>
     </div>
   </div>
   <h1><%= @list.name %></h1>
@@ -26,7 +26,7 @@
                 <%= link_to "✓", check_list_item_path(item), method: :post, class: "check" %>
               <% end %>
             </div>
-            <h2><%= item.title %></h2>
+            <h2><%= auto_link item.title, html: { target: '_blank' } %></h2>
           </div>
           <% if item.description.present? %>
             <div class="list-item-description">

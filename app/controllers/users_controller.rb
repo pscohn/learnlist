@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only: [:edit, :update]
-  before_action :correct_user, only: [:edit, :update]
+  before_action :correct_user, only: [:update]
 
   def show
     set_user
@@ -42,7 +42,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    set_user
+    @user = current_user
   end
 
   def update
@@ -57,10 +57,10 @@ class UsersController < ApplicationController
 
   private
   def set_user
-    @user = User.where('lower(username) = ?', params[:username].downcase).first
+    @user ||= User.where('lower(username) = ?', params[:username].downcase).first
   end
 
   def user_params
-    params.require(:user).permit(:username, :email, :password, :password_confirmation)
+    params.require(:user).permit(:username, :email, :description, :password, :password_confirmation)
   end
 end
