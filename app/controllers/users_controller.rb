@@ -9,21 +9,29 @@ class UsersController < ApplicationController
   def created
     set_user
     @lists = @user.lists
+    @label = 'Created'
+    render 'user_lists'
   end
 
   def saved
     set_user
     @lists = List.where(id: @user.list_users.where(saved: true).pluck(:list_id))
+    @label = 'Saved'
+    render 'user_lists'
   end
 
   def in_progress
     set_user
     @lists = List.where(id: @user.list_users.where(state: 'in_progress').pluck(:list_id))
+    @label = 'In Progress'
+    render 'user_lists'
   end
 
   def completed
     set_user
     @lists = List.where(id: @user.list_users.where(state: 'completed').pluck(:list_id))
+    @label = 'Completed'
+    render 'user_lists'
   end
 
   def new

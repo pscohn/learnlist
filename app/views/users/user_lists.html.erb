@@ -1,7 +1,7 @@
 <% provide(:title, @user.username) %>
 <% unless @user == current_user %>
   <h1>
-    Completed by <%= @user.username %>
+    <%= @label %> by <%= @user.username %>
   </h1>
 <% end %>
 <ul>

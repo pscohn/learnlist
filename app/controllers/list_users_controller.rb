@@ -6,6 +6,7 @@ class ListUsersController < ApplicationController
     list_user = current_user.list_users.find_or_create_by(list: list)
     list_user.saved = true
     if list_user.save
+      list.update_saves
       flash[:success] = 'Saved'
       redirect_back(fallback_location: list)
     else
@@ -19,6 +20,7 @@ class ListUsersController < ApplicationController
     list_user = current_user.list_users.find_or_create_by(list: list)
     list_user.saved = false
     if list_user.save
+      list.update_saves
       flash[:success] = 'Saved'
       redirect_back(fallback_location: list)
     else

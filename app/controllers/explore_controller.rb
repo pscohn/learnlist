@@ -1,11 +1,9 @@
 class ExploreController < ApplicationController
   def recent
-    #TODO make recent
     @lists = List.paginate(page: params[:page])
   end
 
   def popular
-    #TODO
-    @lists = List.paginate(page: params[:page])
+    @lists = List.unscoped.order(saves: :desc).limit(100).paginate(page: params[:page])
   end
 end

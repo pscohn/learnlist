@@ -5,6 +5,8 @@
   <div class="list-meta">
     <span class="user">by <%= link_to list.user.username, list.user %></span>
     &middot;
+    <%= list.saves %> saves
+    &middot;
     <%= render partial: 'lists/save', locals: {list: list, proper: false, class_name: ''} %>
   </div>
   <p><%= truncate(list.description, length: 100) %></p>

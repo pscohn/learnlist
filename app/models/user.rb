@@ -73,7 +73,7 @@ class User < ApplicationRecord
     item_ids = list.list_items.pluck(:id)
     completed_ids = user_checks.where(list_item_id: item_ids, completed: true).pluck(:list_item_id)
     list_completed = item_ids.sort == completed_ids.sort
-    list_user = list_users.find_by(list: list)
+    list_user = list_users.find_or_create_by(list: list)
     if list_completed
       list_user.update_attributes(state: 'completed')
     elsif completed_ids.count > 0 && list_user.state != 'in_progress'

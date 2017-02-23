@@ -8,4 +8,8 @@ class List < ApplicationRecord
   default_scope -> { order(created_at: :desc) }
 
   accepts_nested_attributes_for :list_items, reject_if: lambda { |fields| fields[:title].blank? }, allow_destroy: true
+
+  def update_saves
+    update_attributes(saves: list_users.where(saved: true).count)
+  end
 end

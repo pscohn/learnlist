@@ -5,7 +5,9 @@
   <div class="list-meta">
     <span class="user">by <%= link_to list.user.username, list.user %></span>
     &middot;
+    <%= list.saves %> saves
+    &middot;
     <%= render partial: 'lists/save', locals: {list: list, proper: false, class_name: ''} %>
   </div>
-    <%= render partial: 'lists/list_progress', locals: {progress: current_user.percent_completed(list).round} %>
+    <%= render partial: 'lists/list_progress', locals: {progress: @user.percent_completed(list).round} %>
 </li>
