@@ -1,12 +1,15 @@
 <div class="landing">
-  <h1>PathPen</h1>
-  <h2>
-    Find and share the best ways to learn anything.
-  </h2>
-  <div class="features">
-    <h3>Find a path that works for you</h3>
-    <h3>Track your progress</h3>
-    <h3>Share your custom paths with others</h3>
+  <div class="hero">
+    <h1>
+      Find and share the best ways to learn anything.
+    </h1>
+    <%= link_to "Sign up", signup_path, class: "button" %>
   </div>
-  <%= link_to "Sign up now!", signup_path, class: "button" %>
+  <h2>Featured Paths</h2>
+  <ul class="featured-lists">
+    <%= render @lists %>
+  </ul>
+  <div class="center">
+    <%= link_to "Explore Paths", recent_path, class: "button" %>
+  </div>
 </div>

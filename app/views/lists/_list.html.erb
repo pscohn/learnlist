@@ -1,4 +1,4 @@
-<li class="list-summary border" id="list-<%= list.id %>">
+<li class="list-summary panel" id="list-<%= list.id %>">
   <h2>
     <%= link_to list.name, list %>
   </h2>
@@ -9,5 +9,6 @@
     &middot;
     <%= render partial: 'lists/save', locals: {list: list, proper: false, class_name: ''} %>
   </div>
-  <p><%= truncate(list.description, length: 100) %></p>
+  <p><%= list.description %></p>
+  <span class="progress-stat"><%= list.list_items.count %> Steps</span>
 </li>

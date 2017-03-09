@@ -1,6 +1,7 @@
 class List < ApplicationRecord
   validates :name, presence: true
   validates :user_id, presence: true
+  validates :description, length: { maximum: 200 }
 
   belongs_to :user
   has_many :list_items, dependent: :destroy

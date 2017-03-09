@@ -6,6 +6,7 @@ class User < ApplicationRecord
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
+  validates :description, length: { maximum: 100 }
 
   attr_accessor :activation_token
 
@@ -80,6 +81,15 @@ class User < ApplicationRecord
       list_user.update_attributes(state: 'in_progress')
     end
     list_completed
+  end
+
+  def next_item(list)
+    list_state = list_users.find_by(list: list)&.state
+    return nil if list_state != 'in_progress'
+    list_items = list.list_items
+    checks = user_checks.where(completed: true, list_item_id: list_items.pluck(:id)).pluck(:list_item_id)
+    next_item = list.list_items.where.not(id: checks).order(id: :asc).limit(1).take
+    return next_item
   end
 
   private

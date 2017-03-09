@@ -7,6 +7,8 @@ module ApplicationHelper
   end
 
   def markdown(text)
+    return '' if text.nil?
+
     options = {}
     extensions = {}
     renderer = Redcarpet::Render::HTML.new(options)

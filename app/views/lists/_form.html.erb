@@ -1,8 +1,10 @@
 <%= form_for @list do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %>
-  <%= f.label :description %>
-  <%= f.text_area :description, rows: 5 %>
+  <%= f.label :description, 'Short Description' %>
+  <%= f.text_field :description, maxlength: 200 %>
+  <%= f.label :body, 'Introduction' %>
+  <%= f.text_area :body, rows: 8 %>
   <% if @list.id %>
     <%= f.label :steps %>
     <%= f.fields_for :list_items do |items_form| %>

@@ -30,7 +30,7 @@ class ListsController < ApplicationController
       flash[:success] = 'List created'
       redirect_to edit_list_path(@list)
     else
-      flash[:danger] = @list.errors.all
+      flash[:danger] = @list.errors.full_messages.to_sentence
       render 'new'
     end
   end
@@ -45,7 +45,7 @@ class ListsController < ApplicationController
       flash[:success] = 'List edited'
       redirect_to list_path(@list)
     else
-      flash[:error] = @list.errors
+      flash[:danger] = @list.errors.full_messages.to_sentence
       redirect_to edit_list_path(@list)
     end
   end
@@ -72,7 +72,7 @@ class ListsController < ApplicationController
   private
 
   def list_params
-    params.require(:list).permit(:name, :description, list_items_attributes: [:id , :title, :description, :_destroy])
+    params.require(:list).permit(:name, :description, :body, list_items_attributes: [:id , :title, :description, :_destroy])
   end
 
   def correct_user

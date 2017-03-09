@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170222033136) do
+ActiveRecord::Schema.define(version: 20170309035944) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 20170222033136) do
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
     t.integer  "saves",       default: 0,       null: false
+    t.text     "body"
     t.index ["user_id"], name: "index_lists_on_user_id", using: :btree
   end
 
@@ -64,7 +65,7 @@ ActiveRecord::Schema.define(version: 20170222033136) do
     t.string   "password_digest"
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
-    t.text     "description"
+    t.string   "description"
     t.string   "activation_digest"
     t.boolean  "activated",         default: false
     t.datetime "activated_at"

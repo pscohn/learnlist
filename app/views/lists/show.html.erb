@@ -2,17 +2,19 @@
 <div>
   <div class="list-info">
     <div>
-      <%= link_to gravatar_for(@list.user, size: 50), @list.user %>
+      <%= link_to gravatar_for(@list.user, size: 75), @list.user %>
     </div>
     <div>
       <span class="user"><%= link_to @list.user.username, @list.user %></span>
+      <span><%= @list.user.description %></span>
       <span class="list-info-dates">created <%= @list.created_at %> &middot; updated <%= @list.updated_at %></span>
     </div>
   </div>
   <h1><%= @list.name %></h1>
+  <p><%= @list.description %></p>
   <%= render 'user_actions' %>
   <div class="list-description">
-    <%= markdown(@list.description) %>
+    <%= markdown(@list.body) %>
   </div>
   <div class="list-items">
     <ul>

@@ -1,4 +1,4 @@
-<li class="list-summary" id="list-<%= list.id %>">
+<li class="list-summary panel" id="list-<%= list.id %>">
   <h2>
     <%= link_to list.name, list %>
   </h2>
@@ -9,5 +9,11 @@
     &middot;
     <%= render partial: 'lists/save', locals: {list: list, proper: false, class_name: ''} %>
   </div>
-    <%= render partial: 'lists/list_progress', locals: {progress: @user.percent_completed(list).round} %>
+  <% next_item = @user.next_item(list) %>
+  <% if next_item %>
+    <p class="list-next">
+      Current Step: <%= next_item.title %>
+    </p>
+  <% end %>
+  <%= render partial: 'lists/list_progress', locals: {progress: @user.percent_completed(list).round} %>
 </li>
