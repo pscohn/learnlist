@@ -5,5 +5,11 @@
   </h1>
 <% end %>
 <ul>
-  <%= render(partial: 'lists/list_summary', collection: @lists, as: :list) || "Nothing here." %>
+  <% if @lists.count > 0 %>
+    <%= render(partial: 'lists/list_summary', collection: @lists, as: :list) %>
+  <% elsif @user == current_user %>
+    Nothing here yet. <%= link_to "Find some new paths to begin.", recent_path %>
+  <% else %>
+    Nothing here yet. 
+  <% end %>
 </ul>
