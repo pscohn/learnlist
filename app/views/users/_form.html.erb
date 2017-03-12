@@ -1,7 +1,7 @@
 <%= form_for(@user) do |f| %>
   <%= render 'shared/error_messages' %>
 
-  <%= f.label :name %>
+  <%= f.label :username %>
   <%= f.text_field :username %>
 
   <%= f.label :email %>
@@ -18,5 +18,5 @@
   <%= f.label :password_confirmation, "Confirm Password" %>
   <%= f.password_field :password_confirmation %>
 
-  <%= f.submit 'Update' %>
+  <%= f.submit @user.id ? 'Update' : 'Create Account' %>
 <% end %>

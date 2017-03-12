@@ -19,13 +19,13 @@ strong {
 }
 
 a {
-  color: black;
+  color: $blue;
   text-decoration: none;
   &:hover {
     text-decoration: underline;
   }
   &:visited {
-    color: black;
+    color: $blue;
   }
 }
 
@@ -39,6 +39,19 @@ h1 {
 
 h2 {
   font-size: 1.5em;
+  a {
+    color: black;
+    &:visited {
+      color: black;
+    }
+  }
+}
+
+sidebar a {
+  color: black;
+  &:visited {
+    color: black;
+  }
 }
 
 label {
@@ -339,9 +352,6 @@ a.check, a.check:visited {
       padding: .5em;
       flex-grow: 1;
       margin: 0;
-      a, a:visited {
-        color: $blue;
-      }
     }
     .list-item-actions {
       padding: .5em;
@@ -349,9 +359,6 @@ a.check, a.check:visited {
     .list-item-description {
       padding: .5em;
       background-color: $background-gray;
-      a, a:visited {
-        color: $blue;
-      }
     }
   }
 }
