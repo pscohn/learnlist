@@ -72,7 +72,8 @@ class ListsController < ApplicationController
   private
 
   def list_params
-    params.require(:list).permit(:name, :description, :body, list_items_attributes: [:id , :title, :description, :_destroy])
+    params.require(:list)
+          .permit(:name, :description, :body, list_items_attributes: [:id , :title, :link, :description, :_destroy])
   end
 
   def correct_user

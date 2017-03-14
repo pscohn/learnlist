@@ -3,19 +3,19 @@
     <% if @list_user.nil? || @list_user.state == 'todo' %>
       <div class="buttons">
         <%= render partial: 'save', locals: {list: @list, proper: true, class_name: 'button'} %>
-        <%= link_to "Begin Course", in_progress_list_path(@list), method: :post, class: "button" %>
+        <%= link_to "Begin Path", in_progress_list_path(@list), method: :post, class: "button" %>
       </div>
     <% else %>
       <div class="buttons">
         <%= render partial: 'save', locals: {list: @list, proper: true, class_name: 'button'} %>
-        <%= link_to "Stop Course", reset_list_path(@list), method: :post, class: "button" %>
+        <%= link_to "Stop Path", reset_list_path(@list), method: :post, class: "button" %>
       </div>
       <%= render partial: 'lists/list_progress', locals: {progress: current_user.percent_completed(@list).round} %>
     <% end %>
   <% else %>
     <div class="buttons">
       <%= render partial: 'save', locals: {list: @list, proper: true, class_name: 'button'} %>
-      <%= link_to "Begin Course", in_progress_list_path(@list), method: :post, class: "button" %>
+      <%= link_to "Begin Path", in_progress_list_path(@list), method: :post, class: "button" %>
     </div>
   <% end %>
 </div>

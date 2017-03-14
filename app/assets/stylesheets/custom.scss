@@ -133,11 +133,14 @@ header {
 }
 
 .header-button {
-  background: #FCB4B4;
-  color: #FF6565 !important;
+  background: $pink;
+  color: white !important;
   font-size: small;
   padding: .5em;
   border-radius: 3px;
+  &:hover {
+    color: #eee !important;
+  }
 }
 
 
@@ -189,6 +192,7 @@ sidebar {
 
 
 .container {
+  height: 100%;
   width: 940px;
   margin: 2em;
   margin-right: 8em;
@@ -331,20 +335,27 @@ a.check, a.check:visited {
   display: inline-block;
 }
 
-.list-items {
+.overview {
+  margin-bottom: 1em;
+  border: 1px solid $border-color;
+  h2 a {
+    color: $blue;
+    &:visited {
+      color: $blue;
+    }
+  }
   a.button {
     display: block;
   }
 
   li {
     background-color: white;
-    border: 1px solid $border-color;
-    margin-bottom: 1em;
+    border-bottom: 1px solid $border-color;
     &:last-child {
+      border-bottom: none;
     }
     .list-item-main {
       display: flex;
-      border-bottom: 1px solid $border-color;
     }
     .list-item-main h2 {
       font-size: 1.3em;
@@ -356,9 +367,31 @@ a.check, a.check:visited {
     .list-item-actions {
       padding: .5em;
     }
+  }
+}
+
+.list-items {
+  h2 a {
+    color: $blue;
+    &:visited {
+      color: $blue;
+    }
+  }
+  a.button {
+    display: block;
+  }
+
+  li {
+    margin-bottom: 1em;
+    .list-item-main {
+    }
+    .list-item-main h2 {
+      font-size: 1.3em;
+      line-height: 1.5em;
+      padding: .5em .5em .5em 0;
+      margin: 0;
+    }
     .list-item-description {
-      padding: .5em;
-      background-color: $background-gray;
     }
   }
 }

@@ -1,2 +1,2 @@
 git push heroku master
-heroku db:migrate -a pathpen
+heroku run rails db:migrate -a pathpen

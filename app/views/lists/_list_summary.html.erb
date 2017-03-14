@@ -12,7 +12,12 @@
   <% next_item = @user.next_item(list) %>
   <% if next_item %>
     <p class="list-next">
-      Current Step: <%= next_item.title %>
+      Current Step: 
+      <% if next_item.link.blank? %>
+        <%= next_item.title %>
+      <% else %>
+        <a href="<%= next_item.link %>" target="_blank"><%= next_item.title %></a>
+      <% end %>
     </p>
   <% end %>
   <%= render partial: 'lists/list_progress', locals: {progress: @user.percent_completed(list).round} %>

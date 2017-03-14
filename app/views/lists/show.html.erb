@@ -11,12 +11,16 @@
     </div>
   </div>
   <h1><%= @list.name %></h1>
+  <% if current_user == @list.user %>
+    <%= link_to 'Edit Path', edit_list_path(@list) %>
+  <% end %>
   <p><%= @list.description %></p>
   <%= render 'user_actions' %>
   <div class="list-description">
     <%= markdown(@list.body) %>
   </div>
-  <div class="list-items">
+  <h2>Steps</h2>
+  <div class="overview">
     <ul>
       <% @list.list_items.each do |item| %>
         <li>
@@ -28,7 +32,28 @@
                 <%= link_to "✓", check_list_item_path(item), method: :post, class: "check" %>
               <% end %>
             </div>
-            <h2><%= auto_link item.title, html: { target: '_blank' } %></h2>
+            <% if item.link.blank? %>
+              <h2><%= item.title %></h2>
+            <% else %>
+              <h2><a href="<%= item.link %>" target="_blank"><%= item.title %></a></h2>
+            <% end %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  <h2>More Info</h2>
+  <div class="list-items">
+    <ul>
+      <% @list.list_items.each do |item| %>
+        <% if item.description.present? %>
+        <li>
+          <div class="list-item-main">
+            <% if item.link.blank? %>
+              <h2><%= item.title %></h2>
+            <% else %>
+              <h2><a href="<%= item.link %>" target="_blank"><%= item.title %></a></h2>
+            <% end %>
           </div>
           <% if item.description.present? %>
             <div class="list-item-description">
@@ -36,10 +61,8 @@
             </div>
           <% end %>
         </li>
+        <% end %>
       <% end %>
     </ul>
   </div>
 </div>
-<% if current_user == @list.user %>
-  <%= link_to 'Edit', edit_list_path(@list) %>
-<% end %>
