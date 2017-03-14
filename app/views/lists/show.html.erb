@@ -19,7 +19,7 @@
   <div class="list-description">
     <%= markdown(@list.body) %>
   </div>
-  <h2>Steps</h2>
+  <h2>Overview</h2>
   <div class="overview">
     <ul>
       <% @list.list_items.each do |item| %>
@@ -42,17 +42,16 @@
       <% end %>
     </ul>
   </div>
-  <h2>More Info</h2>
+  <h2>Steps</h2>
   <div class="list-items">
     <ul>
-      <% @list.list_items.each do |item| %>
-        <% if item.description.present? %>
+      <% @list.list_items.each_with_index do |item, index| %>
         <li>
           <div class="list-item-main">
             <% if item.link.blank? %>
-              <h2><%= item.title %></h2>
+              <h2><%= index + 1 %>. <%= item.title %></h2>
             <% else %>
-              <h2><a href="<%= item.link %>" target="_blank"><%= item.title %></a></h2>
+              <h2><%= index + 1 %>. <a href="<%= item.link %>" target="_blank"><%= item.title %></a></h2>
             <% end %>
           </div>
           <% if item.description.present? %>
@@ -61,7 +60,6 @@
             </div>
           <% end %>
         </li>
-        <% end %>
       <% end %>
     </ul>
   </div>
