@@ -25,4 +25,10 @@ class HomeController < ApplicationController
     @lists = List.where(id: @user.list_users.where(state: 'completed').pluck(:list_id))
     render 'users/user_lists'
   end
+
+  def backlog
+    @user = current_user
+    @lists = @user.lists.where.not(id: @user.list_users.where(state: 'in_progress').pluck(:list_id))
+    render 'users/user_lists'
+  end
 end

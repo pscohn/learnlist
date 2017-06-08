@@ -1,25 +1,31 @@
-<header>
-  <nav>
+<header class="masthead bg-blue-light">
+  <div class="container">
+  <nav class="masthead-nav">
     <% if logged_in? %>
-      <ul>
-        <li><%= link_to "Home", home_path  %></li>
-        <li><%= link_to "Explore", recent_path %></li>
-        <li><%= link_to "Profile", current_user %></li>
-        <%= link_to "Create Path", new_list_path, class: 'header-button' %>
-      </ul>
-      <ul class="right">
-        <li><%= link_to "Settings", settings_path %></li>
-        <li><%= link_to "Log out", logout_path, method: "delete" %></li>
-      </ul>
+      <span class="left">
+        <%= link_to "Home", home_path, active: 'active'  %>
+        <% if false %>
+        <%= link_to "Explore", recent_path, active: 'active' %>
+        <%= active_link_to "Profile", current_user, active: 'active' %>
+        <% end %>
+        <%= link_to "Create Path", new_list_path, class: 'btn btn-sm' %>
+      </span>
+      <span class="right">
+        <%= link_to "Settings", settings_path, active: 'active' %>
+        <%= link_to "Log out", logout_path, method: "delete" %>
+      </span>
     <% else %>
-      <ul>
-        <li><%= link_to "PathPen", root_path  %></li>
-        <li><%= link_to "Explore", recent_path %></li>
-      </ul>
-      <ul class="right">
-        <li><%= link_to "Log in", login_path %></li>
-        <li><%= link_to "Sign up", signup_path %></li>
-      </ul>
+      <span class="left">
+        <%= link_to "PathPen", root_path, active: 'active' %>
+        <% if false %>
+        <%= link_to "Explore", recent_path, active: 'active' %>
+        <% end %>
+      </span>
+      <span class="right">
+        <%= link_to "Log in", login_path, active: 'active' %>
+        <%= link_to "Sign up", signup_path, active: 'active' %>
+      </span>
     <% end %>
   </nav>
+  </div>
 </header>

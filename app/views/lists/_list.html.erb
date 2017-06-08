@@ -1,4 +1,4 @@
-<li class="list-summary panel" id="list-<%= list.id %>">
+<div class="border" id="list-<%= list.id %>">
   <h2>
     <%= link_to list.name, list %>
   </h2>
@@ -11,4 +11,4 @@
   </div>
   <p><%= list.description %></p>
   <span class="progress-stat"><%= list.list_items.count %> Steps</span>
-</li>
+</div>

@@ -1,22 +1,30 @@
 <%= form_for(@user) do |f| %>
   <%= render 'shared/error_messages' %>
 
-  <%= f.label :username %>
-  <%= f.text_field :username %>
+<dl class="form-group">
+  <dt><%= f.label :username %></dt>
+  <dd><%= f.text_field :username, class: 'form-control' %></dd>
+</dl>
 
-  <%= f.label :email %>
-  <%= f.email_field :email %>
+<dl class="form-group">
+  <dt><%= f.label :email %></dt>
+  <dd><%= f.email_field :email, class: 'form-control' %></dt>
+</dl>
 
-  <% if @user.id %>
+  <% if false && @user.id %>
     <%= f.label :description, 'About You' %>
     <%= f.text_field :description, maxlength: 100 %>
   <% end %>
 
-  <%= f.label :password %>
-  <%= f.password_field :password %>
+<dl class="form-group">
+  <dt><%= f.label :password %></dt>
+  <dd><%= f.password_field :password, class: 'form-control' %></dd>
+</dl>
 
-  <%= f.label :password_confirmation, "Confirm Password" %>
-  <%= f.password_field :password_confirmation %>
+<dl class="form-group">
+  <dt><%= f.label :password_confirmation, "Confirm Password" %></dt>
+  <dd><%= f.password_field :password_confirmation, class: 'form-control' %></dd>
+</dl>
 
-  <%= f.submit @user.id ? 'Update' : 'Create Account' %>
+  <%= f.submit @user.id ? 'Update' : 'Create Account', class: 'btn' %>
 <% end %>

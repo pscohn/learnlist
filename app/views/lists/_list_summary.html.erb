@@ -1,14 +1,7 @@
-<li class="list-summary panel" id="list-<%= list.id %>">
+<div class="border p-3 mb-3" id="list-<%= list.id %>">
   <h2>
     <%= link_to list.name, list %>
   </h2>
-  <div class="list-meta">
-    <span class="user">by <%= link_to list.user.username, list.user %></span>
-    &middot;
-    <%= list.saves %> saves
-    &middot;
-    <%= render partial: 'lists/save', locals: {list: list, proper: false, class_name: ''} %>
-  </div>
   <% next_item = @user.next_item(list) %>
   <% if next_item %>
     <p class="list-next">
@@ -21,4 +14,4 @@
     </p>
   <% end %>
   <%= render partial: 'lists/list_progress', locals: {progress: @user.percent_completed(list).round} %>
-</li>
+</div>

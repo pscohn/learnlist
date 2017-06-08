@@ -1,10 +1,16 @@
 <div class="landing">
-  <div class="hero">
+  <div class="hero text-center">
     <h1>
-      Find and share the best ways to learn anything.
+      Organize and track your goals.
     </h1>
-    <%= link_to "Sign up", signup_path, class: "button" %>
+    <ol style="">
+      <li>Create a path. It can be a large topic like "Learn Spanish" or a smaller one like "Learn HTTP basics."</li>
+      <li>Add items to your path as you discover new resources.</li>
+      <li>Begin your path, track your progress, or save it for later.</li>
+    </ol>
+    <%= link_to "Sign up", signup_path, class: "btn" %>
   </div>
+  <% if false %>
   <h2>Featured Paths</h2>
   <ul class="featured-lists">
     <%= render @lists %>
@@ -12,4 +18,5 @@
   <div class="center">
     <%= link_to "Explore Paths", recent_path, class: "button" %>
   </div>
+  <% end %>
 </div>

@@ -4,12 +4,17 @@
     <%= @label %> by <%= @user.username %>
   </h1>
 <% end %>
-<ul>
+<div>
   <% if @lists.count > 0 %>
     <%= render(partial: 'lists/list_summary', collection: @lists, as: :list) %>
   <% elsif @user == current_user %>
-    Nothing here yet. <%= link_to "Find some new paths to begin.", recent_path %>
+    <div class="blankslate blankslate-spacious">
+      <h3>Nothing here yet.</h3>
+      <%= link_to "Create a path to get started.", new_list_path %>
+    </div>
   <% else %>
-    Nothing here yet. 
+    <div class="blankslate blankslate-spacious">
+      <h3>Nothing here yet.</h3>
+    </div>
   <% end %>
-</ul>
+</div>

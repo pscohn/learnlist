@@ -1,8 +1,10 @@
 <div class="fields">
   <div class="input">
-  <%= f.text_field :title, placeholder: "Title" %>
-  <%= f.text_field :link, placeholder: "Link" %>
+  <dd><%= f.text_field :title, placeholder: "Title", class: 'form-control' %></dd>
+  <dd><%= f.text_field :link, placeholder: "Link", class: 'form-control' %></dd>
+  <% if false %>
   <%= f.text_area :description, placeholder: "Description", rows: 3 %>
+  <% end %>
   </div>
   <div class="remove">
     <%= link_to_remove_fields "remove", f %>

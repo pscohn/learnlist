@@ -1,5 +1,6 @@
 <% provide(:title, @list.name) %>
 <div>
+  <% if false %>
   <div class="list-info">
     <div>
       <%= link_to gravatar_for(@list.user, size: 75), @list.user %>
@@ -10,57 +11,51 @@
       <span class="list-info-dates">created <%= @list.created_at %> &middot; updated <%= @list.updated_at %></span>
     </div>
   </div>
-  <h1><%= @list.name %></h1>
-  <% if current_user == @list.user %>
-    <%= link_to 'Edit Path', edit_list_path(@list) %>
   <% end %>
+  <h1><%= @list.name %></h1>
+  <% if false %>
   <p><%= @list.description %></p>
+  <% end %>
   <%= render 'user_actions' %>
   <div class="list-description">
     <%= markdown(@list.body) %>
   </div>
-  <h2>Overview</h2>
+  <h2>Steps</h2>
   <div class="overview">
-    <ul>
-      <% @list.list_items.each do |item| %>
-        <li>
-          <div class="list-item-main">
-            <div class="list-item-actions">
-              <% if logged_in? && current_user.checked?(item) %>
-                <%= link_to "✓", check_list_item_path(item), method: :post, class: "check complete checkmark" %>
-              <% else %>
-                <%= link_to "✓", check_list_item_path(item), method: :post, class: "check" %>
-              <% end %>
-            </div>
-            <% if item.link.blank? %>
-              <h2><%= item.title %></h2>
-            <% else %>
-              <h2><a href="<%= item.link %>" target="_blank"><%= item.title %></a></h2>
-            <% end %>
-          </div>
-        </li>
-      <% end %>
-    </ul>
+    <% @list.list_items.each do |item| %>
+      <div class="border p-3 mb-3 list-item-main">
+        <span class="list-item-actions">
+          <% if logged_in? && current_user.checked?(item) %>
+            <%= link_to "✓", check_list_item_path(item), method: :post, class: "check complete checkmark" %>
+          <% else %>
+            <%= link_to "✓", check_list_item_path(item), method: :post, class: "check" %>
+          <% end %>
+        </span>
+        <% if item.link.blank? %>
+          <%= item.title %>
+        <% else %>
+          <a href="<%= item.link %>" target="_blank"><%= item.title %></a>
+        <% end %>
+      </div>
+    <% end %>
   </div>
+  <% if false %>
   <h2>Steps</h2>
   <div class="list-items">
-    <ul>
-      <% @list.list_items.each_with_index do |item, index| %>
-        <li>
-          <div class="list-item-main">
-            <% if item.link.blank? %>
-              <h2><%= index + 1 %>. <%= item.title %></h2>
-            <% else %>
-              <h2><%= index + 1 %>. <a href="<%= item.link %>" target="_blank"><%= item.title %></a></h2>
-            <% end %>
-          </div>
-          <% if item.description.present? %>
-            <div class="list-item-description">
-              <%= markdown(item.description) %>
-            </div>
-          <% end %>
-        </li>
+    <% @list.list_items.each_with_index do |item, index| %>
+      <div class="list-item-main">
+        <% if item.link.blank? %>
+          <h2><%= index + 1 %>. <%= item.title %></h2>
+        <% else %>
+          <h2><%= index + 1 %>. <a href="<%= item.link %>" target="_blank"><%= item.title %></a></h2>
+        <% end %>
+      </div>
+      <% if item.description.present? %>
+        <div class="list-item-description">
+          <%= markdown(item.description) %>
+        </div>
       <% end %>
-    </ul>
+    <% end %>
   </div>
+  <% end %>
 </div>

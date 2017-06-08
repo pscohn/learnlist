@@ -58,7 +58,7 @@ class UsersController < ApplicationController
     set_user
     if @user.update_attributes(user_params)
       flash[:success] = 'User edited'
-      redirect_to @user
+      redirect_to settings_path
     else
       render :edit
     end

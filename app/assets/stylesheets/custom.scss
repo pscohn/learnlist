@@ -237,24 +237,6 @@ sidebar {
   margin-bottom: 0;
 }
 
-.progress-bar-container {
-  background-color: $border-color;
-  height: 1em;
-  width: 100%;
-}
-
-.progress-bar {
-  background-color: $pink;
-  height: 1em;
-}
-
-.progress-stat {
-  text-transform: uppercase;
-  color: $gray;
-  font-weight: bold;
-  font-size: small;
-}
-
 .panel {
   border: 1px solid $border-color;
   background-color: #ffffff;
