@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  include ApplicationHelper
+
   before_action :logged_in_user, only: [:edit, :update]
   before_action :correct_user, only: [:update]
 
@@ -40,6 +42,7 @@ class UsersController < ApplicationController
   end
 
   def create
+    return unless env('ALLOW_REGISTRATION', true)
     @user = User.new(user_params)
     if @user.save
 #      @user.send_activation_email
