@@ -3,7 +3,7 @@
   <nav class="masthead-nav">
     <% if logged_in? %>
       <span class="left">
-        <%= link_to "Home", home_path, active: 'active'  %>
+        <%= link_to "Dashboard", home_path, active: 'active'  %>
         <% if false %>
         <%= link_to "Explore", recent_path, active: 'active' %>
         <%= active_link_to "Profile", current_user, active: 'active' %>

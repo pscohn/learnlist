@@ -43,7 +43,7 @@ class ListsController < ApplicationController
     @list = List.find(params[:id])
     if @list.update_attributes(list_params.merge(updated_at: Time.now))
       flash[:success] = 'List edited'
-      redirect_to list_path(@list)
+      redirect_to edit_list_path(@list)
     else
       flash[:danger] = @list.errors.full_messages.to_sentence
       redirect_to edit_list_path(@list)
@@ -73,7 +73,8 @@ class ListsController < ApplicationController
 
   def list_params
     params.require(:list)
-          .permit(:name, :description, :body, list_items_attributes: [:id , :title, :link, :description, :_destroy])
+          .permit(:name, :description, :body,
+            list_items_attributes: [:id , :title, :link, :index, :description, :_destroy])
   end
 
   def correct_user

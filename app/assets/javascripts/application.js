@@ -41,3 +41,16 @@ function add_fields(link, association, content) {
   $(link).before(content.replace(regexp, new_id));
 }
 
+$(document).on("ready", function() {
+  var el = document.getElementById("sortable");
+  var sortable = Sortable.create(el, {
+    onSort: function(event) {
+      console.log(event);
+      document.querySelectorAll('.input').forEach(function(div, i) {
+        div.querySelector('input[type="hidden"]').value = i;
+        console.log(div.querySelector('input[type="hidden"]'))
+
+      })
+    },
+  });
+});
