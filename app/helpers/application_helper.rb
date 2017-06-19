@@ -1,4 +1,13 @@
 module ApplicationHelper
+  def env(key, default)
+    return default unless ENV[key]
+    val = ENV[key]
+    return true if val == 'true'
+    return false if val == 'false'
+    return val.to_i if val.to_i.to_s == val
+    val
+  end
+
   def active_link_to(name = nil, options = nil, html_options = nil, &block)
     active_class = html_options[:active] || "active"
     html_options.delete(:active)

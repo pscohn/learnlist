@@ -3,6 +3,7 @@ class SessionsController < ApplicationController
   end
 
   def create
+    return unless env('ALLOW_REGISTRATION', true)
     user = User.find_by(email: params['session']['email'].downcase)
     if user && user.authenticate(params['session']['password'])
       if true || user.activated? # set up email activation later
