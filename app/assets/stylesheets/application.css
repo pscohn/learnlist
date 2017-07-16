@@ -16,7 +16,9 @@
  */
 
 body {
+/*  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif; */
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
 .masthead-nav {
