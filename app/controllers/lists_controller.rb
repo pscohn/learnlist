@@ -46,7 +46,7 @@ class ListsController < ApplicationController
       redirect_to edit_list_path(@list)
     else
       flash[:danger] = @list.errors.full_messages.to_sentence
-      redirect_to edit_list_path(@list)
+      render action: :edit
     end
   end
 
