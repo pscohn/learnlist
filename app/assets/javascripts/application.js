@@ -43,14 +43,13 @@ function add_fields(link, association, content) {
 
 $(document).on("ready", function() {
   var el = document.getElementById("sortable");
-  var sortable = Sortable.create(el, {
-    onSort: function(event) {
-      console.log(event);
-      document.querySelectorAll('.input').forEach(function(div, i) {
-        div.querySelector('input[type="hidden"]').value = i;
-        console.log(div.querySelector('input[type="hidden"]'))
-
-      })
-    },
-  });
+  if (el) {
+    var sortable = Sortable.create(el, {
+      onSort: function(event) {
+        document.querySelectorAll('.input').forEach(function(div, i) {
+          div.querySelector('input[type="hidden"]').value = i;
+        });
+      },
+    });
+  }
 });

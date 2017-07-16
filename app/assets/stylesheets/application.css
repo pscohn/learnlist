@@ -40,6 +40,11 @@ input[type="text"], input[type="email"], input[type="password"], textarea {
   width: 100% !important;
 }
 
+.state {
+  width: 100%;
+  text-align: left;
+}
+
 .masthead-nav {
   float: none;
 }
@@ -71,4 +76,39 @@ input[type="text"], input[type="email"], input[type="password"], textarea {
   text-align: center;
   font-size: 1.2em;
   list-style-position: inside;
+}
+
+.list-item-main {
+  display: flex;
+  line-height: 35px;
+  font-size: 18px;
+}
+
+a.check, a.check:visited {
+  color: white;
+  margin-right: 1em;
+}
+
+a.check:hover {
+  color: #ddd;
+  text-decoration: none;
+}
+
+.check {
+  width: 35px;
+  height: 35px;
+  display: block;
+  border-radius: 50%;
+  border: 3px solid #ddd;
+  text-align: center;
+}
+
+.check.complete {
+  border: 3px solid #3eb358;
+  border: none;
+  background: #3eb358;
+}
+
+.checkmark {
+  display: inline-block;
 }

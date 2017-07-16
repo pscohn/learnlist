@@ -28,11 +28,13 @@
             <%= link_to "✓", check_list_item_path(item), method: :post, class: "check" %>
           <% end %>
         </span>
+        <span>
         <% if item.link.blank? %>
           <%= item.title %>
         <% else %>
           <a href="<%= item.link %>" target="_blank"><%= item.title %></a>
         <% end %>
+        </span>
       </div>
     <% end %>
   </div>

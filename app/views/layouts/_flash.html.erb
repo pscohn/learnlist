@@ -1,0 +1,3 @@
+<% flash.each do |message_type, message| %>
+  <div class="state state-<%= message_type == 'danger' ? 'closed' : 'open' %>"><%= message %></div>
+<% end %>
