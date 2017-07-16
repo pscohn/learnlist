@@ -1,6 +1,7 @@
 class ListsController < ApplicationController
   before_action :logged_in_user, only: [:new, :create, :edit, :update, :check_item]
   before_action :correct_user, only: [:edit, :update]
+  layout 'list'
 
   def show
     @list = List.find(params[:id])
@@ -22,6 +23,7 @@ class ListsController < ApplicationController
 
   def new
     @list = List.new
+    render layout: 'auth'
   end
 
   def create
@@ -37,6 +39,7 @@ class ListsController < ApplicationController
 
   def edit
     @list = List.find(params[:id])
+    render layout: 'auth'
   end
 
   def update

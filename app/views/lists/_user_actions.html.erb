@@ -1,15 +1,21 @@
-<div class="list-actions">
+<div class="list-actions m-b">
   <% if logged_in? %>
-    <% if current_user == @list.user %>
-      <%= link_to 'Edit Path', edit_list_path(@list), class: 'btn' %>
-    <% end %>
-    <% if @list_user.nil? || @list_user.state == 'todo' %>
-      <%= render partial: 'save', locals: {list: @list, proper: true, class_name: 'btn btn-sm btn-with-count'} %>
-      <%= link_to "Begin Path", in_progress_list_path(@list), method: :post, class: "btn btn-primary" %>
-    <% else %>
-      <%= render partial: 'save', locals: {list: @list, proper: true, class_name: 'btn btn-sm btn-with-count'} %>
-      <%= link_to "Stop Path", reset_list_path(@list), method: :post, class: "btn" %>
-      <%= render partial: 'lists/list_progress', locals: {progress: current_user.percent_completed(@list).round} %>
+    <div>
+      <% if current_user == @list.user %>
+          <%= link_to 'Edit Path', edit_list_path(@list), class: 'btn' %>
+      <% end %>
+      <% if @list_user.nil? || @list_user.state == 'todo' %>
+          <%= render partial: 'save', locals: {list: @list, proper: true, class_name: 'btn btn-sm btn-with-count'} %>
+          <%= link_to "Begin Path", in_progress_list_path(@list), method: :post, class: "btn btn-primary" %>
+      <% else %>
+          <%= render partial: 'save', locals: {list: @list, proper: true, class_name: 'btn btn-sm btn-with-count'} %>
+          <%= link_to "Stop Path", reset_list_path(@list), method: :post, class: "btn" %>
+      <% end %>
+    </div>
+    <% if current_user == @list.user && @list_user && @list_user.state != 'todo' %>
+      <div class="m-t">
+        <%= render partial: 'lists/list_progress', locals: {progress: current_user.percent_completed(@list).round} %>
+      </div>
     <% end %>
   <% else %>
     <%= render partial: 'save', locals: {list: @list, proper: true, class_name: 'btn btn-sm btn-with-count'} %>

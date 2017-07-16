@@ -1,3 +1,10 @@
+<% if @list.id %>
+  <%= link_to 'Back', @list, class: 'btn btn-default' %>
+  <%= link_to 'Delete Path', list_path(@list),
+                method: :delete,
+                class: "btn btn-danger",
+                data: { confirm: 'Are you sure you wanto to delete this path?' } %>
+<% end %>
 <%= form_for @list do |f| %>
   <dl class="form-group">
     <dt><%= f.label :name %></dt>
@@ -6,8 +13,6 @@
   <% if false %>
   <%= f.label :description, 'Short Description' %>
   <%= f.text_field :description, maxlength: 200 %>
-  <%= f.label :body, 'Introduction' %>
-  <%= f.text_area :body, rows: 8 %>
   <% end %>
   <% if @list.id %>
     <dl class="form-group">
@@ -19,13 +24,13 @@
       </div>
       <%= link_to_add_fields "Add Item", f, :list_items %>
     </dl>
+    <dl class="form-group">
+      <dt><%= f.label :body, 'Notes' %></dt>
+      <dt><%= f.text_area :body, rows: 8, class: 'form-control' %></dt>
+    </dl>
+    <%= f.submit "Save", class: 'btn' %>
+  <% else %>
+    <%= f.submit "Create", class: 'btn btn-primary' %>
   <% end %>
-  <%= f.submit "Save", class: 'btn' %>
-<% end %>
-<%= link_to 'Done', @list, class: 'btn btn-default' %>
-<% if @list.id %>
-  <%= link_to 'Delete Path', list_path(@list),
-                method: :delete,
-                class: "btn btn-danger",
-                data: { confirm: 'Are you sure?' } %>
+
 <% end %>

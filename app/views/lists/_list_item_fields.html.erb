@@ -1,13 +1,13 @@
 <div class="fields">
   <div class="input">
-    <dd><%= f.text_field :title, placeholder: "Title", class: 'form-control' %></dd>
+    <dd><%= f.text_field :title, placeholder: "Title", class: 'form-control m-b' %></dd>
     <dd><%= f.text_field :link, placeholder: "Link", class: 'form-control' %></dd>
     <%= f.hidden_field :index, value: f.object.index  %>
     <% if false %>
     <%= f.text_area :description, placeholder: "Description", rows: 3 %>
     <% end %>
   </div>
-  <div class="remove">
+  <div class="remove m-b-l m-t">
     <%= link_to_remove_fields "remove", f %>
   </div>
 </div>

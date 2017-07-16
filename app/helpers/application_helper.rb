@@ -27,7 +27,7 @@ module ApplicationHelper
   end
 
   def link_to_remove_fields(name, f)
-    f.hidden_field(:_destroy) + link_to(name, "#", class: "link_to_remove_fields button")
+    f.hidden_field(:_destroy) + link_to(name, "#", class: "link_to_remove_fields btn btn-danger")
   end
 
   def link_to_add_fields(name, f, association)
@@ -35,6 +35,6 @@ module ApplicationHelper
     fields = f.fields_for(association, new_object, :child_index => "new_#{association}") do |builder|
       render(association.to_s.singularize + "_fields", :f => builder)
     end
-    link_to(name, "#", "data-association" => "#{association}",  "data-content" => "#{fields}", :class => "button link_to_add_fields" )
+    link_to(name, "#", "data-association" => "#{association}",  "data-content" => "#{fields}", :class => "btn link_to_add_fields" )
   end
 end

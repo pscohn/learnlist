@@ -17,9 +17,6 @@
   <p><%= @list.description %></p>
   <% end %>
   <%= render 'user_actions' %>
-  <div class="list-description">
-    <%= markdown(@list.body) %>
-  </div>
   <h2>Steps</h2>
   <div class="overview">
     <% @list.list_items.each do |item| %>
@@ -38,6 +35,10 @@
         <% end %>
       </div>
     <% end %>
+  </div>
+  <h2>Notes</h2>
+  <div class="list-description">
+    <%= markdown(@list.body) %>
   </div>
   <% if false %>
   <h2>Steps</h2>

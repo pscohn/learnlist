@@ -21,12 +21,35 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+.m-b {
+  margin-bottom: 1em;
+}
+.m-t {
+  margin-top: 1em;
+}
+.m-l {
+  margin-left: 1em;
+}
+.m-r {
+  margin-right: 1em;
+}
+.m-b-l { margin-bottom: 2em }
+.main { margin-bottom: 2em }
+
+input[type="text"], input[type="email"], input[type="password"], textarea {
+  width: 100% !important;
+}
+
 .masthead-nav {
   float: none;
 }
 
 .masthead-nav a {
   color: #4078c0;
+}
+
+.masthead-nav a:hover {
+  color: #75abf1;
 }
 
 .progress-bar-container {
