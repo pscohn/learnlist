@@ -6,7 +6,9 @@
     </div>
     <div>
       <span class="user"><%= link_to @list.user.username, @list.user %></span>
-      <span class="list-info-dates">created <%= @list.created_at %> &middot; updated <%= @list.updated_at %></span>
+      <span class="list-info-dates">
+        created <%= @list.created_at.to_date.to_formatted_s(:long) %> &middot; updated <%= @list.updated_at.to_date.to_formatted_s(:long) %>
+      </span>
     </div>
   </div>
   <h1><%= @list.name %></h1>
@@ -28,8 +30,10 @@
         <span>
         <% if item.link.blank? %>
           <%= item.title %>
-        <% else %>
+        <% elsif item.title.present? %>
           <a href="<%= item.link %>" target="_blank"><%= item.title %></a>
+        <% else %>
+          <a href="<%= item.link %>" target="_blank"><%= item.link %></a>
         <% end %>
         </span>
       </div>

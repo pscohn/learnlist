@@ -112,3 +112,7 @@ a.check:hover {
 .checkmark {
   display: inline-block;
 }
+
+.btn-with-count {
+  float: none;
+}
