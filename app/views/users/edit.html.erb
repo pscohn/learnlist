@@ -3,11 +3,10 @@
 <h1>Settings</h1>
 
 <div class="">
-  <% if false %>
   <div class="gravatar_edit">
-    <label>Profile Picture <a href="http://gravatar.com/emails" rel="noopener" target="_blank">(Change)</a></label>
     <a href="http://gravatar.com/emails" rel="noopener" target="_blank"><%= gravatar_for @user %></a>
+    <br />
+    <a href="http://gravatar.com/emails" rel="noopener" target="_blank">Change Profile Picture</a>
   </div>
-  <% end %>
   <%= render 'form' %>
 </div>

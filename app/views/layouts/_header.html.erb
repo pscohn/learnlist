@@ -6,8 +6,8 @@
         <%= link_to "Dashboard", home_path, active: 'active'  %>
         <% if false %>
         <%= link_to "Explore", recent_path, active: 'active' %>
-        <%= active_link_to "Profile", current_user, active: 'active' %>
         <% end %>
+        <%= link_to "Profile", current_user, active: 'active' %>
         <%= link_to "Create Path", new_list_path, class: 'btn btn-sm' %>
       </span>
       <span class="right">

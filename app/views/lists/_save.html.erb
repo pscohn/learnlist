@@ -1,10 +1,7 @@
-<% if false %>
-<div class="clearfix">
+<span>
   <% if current_user&.saved? list %>
     <%= link_to(proper ? 'Unsave' : 'unsave', unsave_list_path(list), method: :post, class: class_name) %>
   <% else %>
     <%= link_to(proper ? 'Save' : 'save', save_list_path(list), method: :post, class: class_name) %>
   <% end %>
-  <span class="social-count"><%= list.saves %></span>
-</div>
-<% end %>
+</span>

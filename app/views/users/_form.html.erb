@@ -11,10 +11,12 @@
   <dd><%= f.email_field :email, class: 'form-control' %></dt>
 </dl>
 
-  <% if false && @user.id %>
-    <%= f.label :description, 'About You' %>
-    <%= f.text_field :description, maxlength: 100 %>
+<dl class="form-group">
+  <% if @user.id %>
+    <dt><%= f.label :description, 'About You' %></dt>
+    <dd><%= f.text_field :description, class: 'form-control', maxlength: 100 %></dd>
   <% end %>
+</dl>
 
 <dl class="form-group">
   <dt><%= f.label :password %></dt>
