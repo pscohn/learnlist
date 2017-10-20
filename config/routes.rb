@@ -30,7 +30,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :lists do
+  resources :lists, except: :index do
     member do
       post 'in_progress', to: 'list_users#in_progress'
       post 'completed', to: 'list_users#completed'

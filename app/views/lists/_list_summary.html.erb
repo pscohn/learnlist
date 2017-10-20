@@ -2,10 +2,13 @@
   <h2>
     <%= link_to list.name, list %>
   </h2>
+  <% if list.private %>
+    <span class="state state-closed">Private</span>
+  <% end %>
   <% next_item = @user.next_item(list) %>
   <% if next_item %>
     <p class="list-next">
-      Current Step: 
+      Current Step:
       <% if next_item.link.blank? %>
         <%= next_item.title %>
       <% else %>

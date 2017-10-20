@@ -1,15 +1,17 @@
-<% if @list.id %>
-  <%= link_to 'Back', @list, class: 'btn btn-default' %>
-  <%= link_to 'Delete Path', list_path(@list),
-                method: :delete,
-                class: "btn btn-danger",
-                data: { confirm: 'Are you sure you wanto to delete this path?' } %>
-<% end %>
 <%= form_for @list do |f| %>
+  <% if @list.id %>
+    <%= link_to 'View Path', @list, class: 'btn btn-default' %>
+    <%= f.submit "Save", class: 'btn' %>
+    <%= link_to 'Delete Path', list_path(@list),
+                  method: :delete,
+                  class: "btn btn-danger",
+                  data: { confirm: 'Are you sure you wanto to delete this path?' } %>
+  <% end %>
   <dl class="form-group">
     <dt><%= f.label :name %></dt>
     <dd><%= f.text_field :name, class: 'form-control' %></dd>
   </dl>
+  <%= f.check_box :private, class: 'form-control' %> <%= f.label :private %>
   <% if false %>
   <%= f.label :description, 'Short Description' %>
   <%= f.text_field :description, maxlength: 200 %>

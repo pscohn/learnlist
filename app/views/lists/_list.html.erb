@@ -1,7 +1,10 @@
 <div class="border" id="list-<%= list.id %>">
   <h2>
-    <%= link_to list.name, list %>
+    <%= link_to list.name, list %>foo
   </h2>
+  <% if @list.private %>
+    <span class="state state-closed">Private</span>
+  <% end %>
   <div class="list-meta">
     <span class="user">by <%= link_to list.user.username, list.user %></span>
     &middot;

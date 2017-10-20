@@ -12,6 +12,9 @@
     </div>
   </div>
   <h1><%= @list.name %></h1>
+  <% if @list.private %>
+    <span class="state state-closed">Private</span>
+  <% end %>
   <% if false %>
   <p><%= @list.description %></p>
   <% end %>

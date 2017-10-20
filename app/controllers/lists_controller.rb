@@ -1,6 +1,7 @@
 class ListsController < ApplicationController
   before_action :logged_in_user, only: [:new, :create, :edit, :update, :check_item]
   before_action :correct_user, only: [:edit, :update]
+  before_action :correct_user_if_private, only: :show
   layout 'list'
 
   def show
@@ -13,12 +14,12 @@ class ListsController < ApplicationController
 
   def index
     #TODO make recent
-    @lists = List.paginate(page: params[:page])
+    @lists = List.where(private: false).paginate(page: params[:page])
   end
 
   def popular
     #TODO
-    @lists = List.paginate(page: params[:page])
+    @lists = List.where(private: false).paginate(page: params[:page])
   end
 
   def new
@@ -76,12 +77,17 @@ class ListsController < ApplicationController
 
   def list_params
     params.require(:list)
-          .permit(:name, :description, :body,
+          .permit(:name, :description, :body, :private,
             list_items_attributes: [:id , :title, :link, :index, :description, :_destroy])
   end
 
   def correct_user
     @list ||= List.find(params[:id])
-    redirect_to(lists_path) unless current_user?(@list.user)
+    redirect_to(login_path) unless current_user?(@list.user)
+  end
+
+  def correct_user_if_private
+    @list ||= List.find(params[:id])
+    redirect_to(login_path) if @list.private && !current_user?(@list.user)
   end
 end

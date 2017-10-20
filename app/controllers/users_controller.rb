@@ -11,27 +11,33 @@ class UsersController < ApplicationController
   def created
     set_user
     @lists = @user.lists
+    unless @is_owner
+      @lists = @lists.where(private: false)
+    end
     @label = 'Created'
     render 'user_lists'
   end
 
   def saved
     set_user
-    @lists = List.where(id: @user.list_users.where(saved: true).pluck(:list_id))
+    list_ids = @user.list_users.where(saved: true).pluck(:list_id)
+    @lists = lists_maybe_private(list_ids)
     @label = 'Saved'
     render 'user_lists'
   end
 
   def in_progress
     set_user
-    @lists = List.where(id: @user.list_users.where(state: 'in_progress').pluck(:list_id))
+    list_ids = @user.list_users.where(state: 'in_progress').pluck(:list_id)
+    @lists = lists_maybe_private(list_ids)
     @label = 'In Progress'
     render 'user_lists'
   end
 
   def completed
     set_user
-    @lists = List.where(id: @user.list_users.where(state: 'completed').pluck(:list_id))
+    list_ids = @user.list_users.where(state: 'completed').pluck(:list_id)
+    @lists = lists_maybe_private(list_ids)
     @label = 'Completed'
     render 'user_lists'
   end
@@ -68,8 +74,18 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def lists_maybe_private(list_ids)
+    if @is_owner
+      List.where(id: list_ids)
+    else
+      List.where(id: list_ids, private: false)
+    end
+  end
+
   def set_user
     @user ||= User.where('lower(username) = ?', params[:username].downcase).first
+    @is_owner ||= @user == current_user
   end
 
   def user_params

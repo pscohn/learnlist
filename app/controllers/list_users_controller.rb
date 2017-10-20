@@ -1,6 +1,7 @@
 class ListUsersController < ApplicationController
   before_action :logged_in_user, only: [:save, :unsave, :in_progress, :completed, :reset]
-  
+  before_action :correct_user_if_private
+
   def save
     list = List.find(params[:id])
     list_user = current_user.list_users.find_or_create_by(list: list)
@@ -54,5 +55,9 @@ class ListUsersController < ApplicationController
       redirect_back(fallback_location: list)
     end
   end
-    
+
+  def correct_user_if_private
+    @list ||= List.find(params[:id])
+    redirect_to(login_path) if @list.private && !current_user?(@list.user)
+  end
 end
