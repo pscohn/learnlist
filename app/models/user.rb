@@ -85,7 +85,7 @@ class User < ApplicationRecord
 
   def next_item(list)
     list_state = list_users.find_by(list: list)&.state
-    return nil if list_state != 'in_progress'
+    #return nil if list_state != 'in_progress'
     list_items = list.list_items
     checks = user_checks.where(completed: true, list_item_id: list_items.pluck(:id)).pluck(:list_item_id)
     next_item = list.list_items.where.not(id: checks).order(id: :asc).limit(1).take

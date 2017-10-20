@@ -8,11 +8,13 @@
   <% next_item = @user.next_item(list) %>
   <% if next_item %>
     <p class="list-next">
-      Current Step:
+      <span class="list-item-actions">
+        <%= link_to "✓", check_list_item_path(next_item), method: :post, class: "check small-check" %>
+      </span>
       <% if next_item.link.blank? %>
         <%= next_item.title %>
       <% else %>
-        <a href="<%= next_item.link %>" target="_blank"><%= next_item.title %></a>
+        <a href="<%= next_item.link %>" target="_blank"><%= next_item.title || next_item.link %></a>
       <% end %>
     </p>
   <% end %>
