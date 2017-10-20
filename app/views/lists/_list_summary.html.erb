@@ -14,7 +14,7 @@
       <% if next_item.link.blank? %>
         <%= next_item.title %>
       <% else %>
-        <a href="<%= next_item.link %>" target="_blank"><%= next_item.title || next_item.link %></a>
+        <a href="<%= next_item.link %>" target="_blank"><%= next_item.title.presence || next_item.link %></a>
       <% end %>
     </p>
   <% end %>
