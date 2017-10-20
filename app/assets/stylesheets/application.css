@@ -15,10 +15,11 @@
  * require_tree .
  */
 
+
 body {
 /*  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif; */
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
+  font-family: 'Helvetica Neue', Helvetica, sans-serif;
+  background-color: #F4F4F7;
 }
 
 h1, h2, h3 {
@@ -45,10 +46,18 @@ input[type="text"], input[type="email"], input[type="password"], textarea {
   width: 100% !important;
 }
 
+nav a, h1 a, h2 a, h3 a {
+  color: #5d5e61;
+}
+
 .state {
   font-size: 12px;
   padding: 2px 10px;
   vertical-align: text-bottom;
+}
+
+.masthead {
+  background-color: #5da0f7;
 }
 
 .masthead-nav {
@@ -56,11 +65,23 @@ input[type="text"], input[type="email"], input[type="password"], textarea {
 }
 
 .masthead-nav a {
-  color: #4078c0;
+  color: white;
+}
+
+.masthead-nav a.btn {
+  color: #5da0f7;
 }
 
 .masthead-nav a:hover {
-  color: #75abf1;
+  color: #ccc;
+}
+
+.masthead-nav a.btn:hover {
+  color: #5da0f7;
+}
+
+.path-listing {
+  background-color: white;
 }
 
 .progress-bar-container {
@@ -84,35 +105,44 @@ input[type="text"], input[type="email"], input[type="password"], textarea {
   list-style-position: inside;
 }
 
+.list-actions {
+  border: 1px solid #ddd;
+  padding: 1em;
+  background: white;
+}
+
 .list-item-main {
+  background-color: white;
   display: flex;
   line-height: 35px;
-  font-size: 18px;
+  padding: 5px;
+}
+
+.check {
+  border-radius: 3px;
+  border: 2px solid #ddd;
+  text-align: center;
+  margin-right: 1em;
+  width: 35px;
+  height: 35px;
+  display: inline-block;
+  line-height: 31px;
+  font-size:20px;
+  vertical-align: middle;
+}
+
+.check.complete {
+  border: 3px solid #3eb358;
+  background: #3eb358;
 }
 
 a.check, a.check:visited {
   color: white;
-  margin-right: 1em;
 }
 
 a.check:hover {
   color: #ddd;
   text-decoration: none;
-}
-
-.check {
-  width: 35px;
-  height: 35px;
-  display: block;
-  border-radius: 50%;
-  border: 3px solid #ddd;
-  text-align: center;
-}
-
-.check.complete {
-  border: 3px solid #3eb358;
-  border: none;
-  background: #3eb358;
 }
 
 .checkmark {

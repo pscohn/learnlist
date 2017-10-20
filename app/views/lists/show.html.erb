@@ -22,7 +22,7 @@
   <h2>Steps</h2>
   <div class="overview">
     <% @list.list_items.each do |item| %>
-      <div class="border p-3 mb-3 list-item-main">
+      <div class="border mb-3 list-item-main">
         <span class="list-item-actions">
           <% if logged_in? && current_user.checked?(item) %>
             <%= link_to "✓", check_list_item_path(item), method: :post, class: "check complete checkmark" %>
