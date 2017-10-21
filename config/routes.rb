@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get 'recent' => 'explore#recent'
   get 'popular' => 'explore#popular'
   get 'settings' => 'users#edit'
+  get 'get_title', to: 'lists#get_url_title'
 
   resources :account_activations, only: [:edit]
 

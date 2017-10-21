@@ -73,6 +73,11 @@ class ListsController < ApplicationController
     end
   end
 
+  def get_url_title
+    doc = Pismo::Document.new(params[:url])
+    render json: { title: doc.title }
+  end
+
   private
 
   def list_params

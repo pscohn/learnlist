@@ -41,6 +41,19 @@ function add_fields(link, association, content) {
   $(link).before(content.replace(regexp, new_id));
 }
 
+$(document).on('paste', '.url', function() {
+  var title_field = $(this).parent().parent().find('.title');
+  var url_field = $(this);
+  if (title_field.val() === '') {
+    setTimeout(function() {
+      var url = url_field.val();
+      $.get("/get_title?url=" + url, function(data) {
+        title_field.val(data.title);
+      });
+    }, 100);
+  }
+});
+
 $(document).on("ready", function() {
   var el = document.getElementById("sortable");
   if (el) {
