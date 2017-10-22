@@ -8,12 +8,6 @@ class HomeController < ApplicationController
     render 'users/user_lists'
   end
 
-  def saved
-    @user = current_user
-    @lists = List.where(id: @user.list_users.where(saved: true).pluck(:list_id))
-    render 'users/user_lists'
-  end
-
   def in_progress
     @user = current_user
     @lists = List.where(id: @user.list_users.where(state: 'in_progress').pluck(:list_id))
@@ -27,8 +21,9 @@ class HomeController < ApplicationController
   end
 
   def backlog
+    #TODO remove saved?
     @user = current_user
-    @lists = @user.lists.where.not(id: @user.list_users.where(state: 'in_progress').pluck(:list_id))
+    @lists = List.where(id: @user.list_users.where(saved: true, state: 'todo').pluck(:list_id))
     render 'users/user_lists'
   end
 end

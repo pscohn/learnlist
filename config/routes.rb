@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   delete 'logout' => 'sessions#destroy'
   get 'home' => 'home#in_progress'
   get 'home/completed' => 'home#completed'
-  get 'home/saved' => 'home#saved'
   get 'home/created' => 'home#created'
   get 'home/backlog' => 'home#backlog'
   get 'recent' => 'explore#recent'

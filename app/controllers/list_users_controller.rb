@@ -47,6 +47,7 @@ class ListUsersController < ApplicationController
     list = List.find(params[:id])
     list_user = current_user.list_users.find_or_create_by(list: list)
     list_user.state = state
+    list_user.saved = true
     if list_user.save
       flash[:success] = 'Saved'
       redirect_back(fallback_location: list)
