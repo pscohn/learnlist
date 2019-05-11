@@ -5,7 +5,11 @@
   <% if list.private %>
     <span class="state state-closed">Private</span>
   <% end %>
-  <% next_item = @user.next_item(list) %>
+  <% if @user %>
+    <% next_item = @user.next_item(list) %>
+  <% else %>
+    <% next_item = list.list_items.first %>
+  <% end %>
   <% if next_item %>
     <p class="list-next">
       <span class="list-item-actions">
@@ -18,5 +22,5 @@
       <% end %>
     </p>
   <% end %>
-  <%= render partial: 'lists/list_progress', locals: {progress: @user.percent_completed(list).round} %>
+  <%= render partial: 'lists/list_progress', locals: {progress: (@user && @user.percent_completed(list).round) || 0} %>
 </div>

@@ -1,5 +1,5 @@
 <h1>Most Saved Paths</h1>
 <ul>
-  <%= render @lists %>
+  <%= render(partial: 'lists/list_summary', collection: @lists, as: :list) %>
 </ul>
 <%= will_paginate @lists %>

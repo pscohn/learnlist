@@ -1,9 +1,7 @@
-<sidebar>
-  <h2>
+<nav class="menu">
+  <span class="menu-heading">
     Explore Paths
-  </h2>
-  <ul>
-    <li><%= active_link_to 'Recent', recent_path, active: 'border-left' %></li>
-    <li><%= active_link_to 'Most Saved', popular_path, active: 'border-left' %></li>
-  </ul>
-</sidebar>
+  </span>
+  <%= active_link_to 'Recent', recent_path, class: 'menu-item', active: 'selected' %>
+  <%= active_link_to 'Most Saved', popular_path, class: 'menu-item', active: 'selected' %>
+</nav>
