@@ -10,7 +10,9 @@
   <% elsif @user == current_user %>
     <div class="blankslate blankslate-spacious">
       <h3>Nothing here yet.</h3>
-      <%= link_to "Create a path to get started.", new_list_path %>
+      <br />
+      <%= link_to "Create a path to get started", new_list_path %>, or
+      <%= link_to "browse paths created by other users.", recent_path %>.
     </div>
   <% else %>
     <div class="blankslate blankslate-spacious">

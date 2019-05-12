@@ -53,7 +53,9 @@ class UsersController < ApplicationController
     if @user.save
 #      @user.send_activation_email
 #      flash[:info] = 'Please check your email to activate your account'
-      redirect_to root_url
+      flash[:info] = 'Registration successful'
+      log_in @user
+      redirect_to home_url
     else
       render 'new'
     end
@@ -86,6 +88,10 @@ class UsersController < ApplicationController
   def set_user
     @user ||= User.where('lower(username) = ?', params[:username].downcase).first
     @is_owner ||= @user == current_user
+    if !@user
+      redirect_to home_path
+      flash[:error] = 'User not found'
+    end
   end
 
   def user_params
