@@ -17,7 +17,7 @@
       </div>
     <% end %>
   <% else %>
-    <%= render partial: 'save', locals: {list: @list, proper: true, class_name: 'btn btn-sm btn-with-count'} %>
+    <%= render partial: 'save', locals: {list: @list, proper: true, class_name: 'btn btn-with-count'} %>
     <%= link_to "Begin Path", in_progress_list_path(@list), method: :post, class: "btn btn-primary" %>
   <% end %>
 </div>

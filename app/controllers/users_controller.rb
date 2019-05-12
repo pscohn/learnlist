@@ -90,7 +90,7 @@ class UsersController < ApplicationController
     @is_owner ||= @user == current_user
     if !@user
       redirect_to home_path
-      flash[:error] = 'User not found'
+      flash[:danger] = 'User not found'
     end
   end
 

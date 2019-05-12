@@ -2,6 +2,7 @@
   <h2>
     <%= link_to list.name, list %>
   </h2>
+  by <%= link_to list.user.username, list.user %>
   <% if list.private %>
     <span class="state state-closed">Private</span>
   <% end %>
